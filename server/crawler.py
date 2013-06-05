@@ -24,9 +24,6 @@ WATCHED_REPO = [{
     }, {
         "url": "apache/cassandra",
         "name": "cassandra"
-    }, {
-        "url": "apache/couchdb",
-        "name": "couchdb"
     }]
 INTERVAL = 60*60
 
