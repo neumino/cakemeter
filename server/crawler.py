@@ -72,6 +72,10 @@ def fetch(scheduler, fn):
         except urllib2.HTTPError, e:
             print "Could not get content for https://api.github.com/repos/"+repo["url"]
             print 'Error returned: %s.' % e.code
+        except:
+            print "Could not get content for https://api.github.com/repos/"+repo["url"]
+            print "Not parsed error"
+
 
     scheduler.enter(INTERVAL, 1, fn, [scheduler, fn])
 
