@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script type="text/javascript">
+function refresh() {
+    var date_last_cake = new Date("November 22, 2013 12:00:00");
+    var today = new Date();
+    var days = Math.floor((today-date_last_cake)/(24*3600*1000));
+    $("#days").html(days);
+    change_background();
+    change_text();
+};
+function change_background() {
+    var min = 0xaaaaaa;
+    var max = 0xdddddd;
+    var color = '#' + Math.round( Math.random() * (max-min) + min ).toString( 16 );
+    $("html").css("background", color);
+    $("body").css("background", color);
+}
+function change_text() {
+    var min = 0;
+    var max = 100;
+    var color = "#";
+    var piece = Math.round( Math.random() * (max-min) + min ).toString( 16 );
+    if (piece.length < 2) {
+        piece = "0"+piece;
+    }
+    color += piece;
+    piece = Math.round( Math.random() * (max-min) + min ).toString( 16 );
+    if (piece.length < 2) {
+        piece = "0"+piece;
+    }
+    color += piece;
+    piece = Math.round( Math.random() * (max-min) + min ).toString( 16 );
+    if (piece.length < 2) {
+        piece = "0"+piece;
+    }
+    color += piece;
+    // Loop? What's that? :)
+    $("body").css("color", color);
+}
+$(document).ready( function() {
+    refresh();
+    setInterval( refresh, 1000*60*30 );
+})
+</script>
+<style>
+html, body{
+    height: 100%;
+    width: 100%;
+    background: #F2E6CE;
+    font-weight: bold;
+}
+#main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -400px;
+    height: 600px;
+    width: 800px;
+    font-size 4;
+    text-align: center;
+    font-size: 5em;
+}
+#days{
+    margin: 0px;
+    font-size: 3em;
+}
+</style>
+</head>
+<body>
+
+<div id="main">
+    <p>Days since last cake</p>
+    <p id="days"></p>
+</div>
+
+</body>
+</html>
+
